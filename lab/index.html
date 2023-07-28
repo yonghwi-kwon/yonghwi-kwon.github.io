@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SEED Research Group</title>
+    <meta name="description" content="SEED Research Group at the University of Maryland" />
+    
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- Bootstrap Css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    <!-- Materialdesign icons Css -->
+    <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css">
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
+
+    <!-- Animate Css -->
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+
+    <!-- Magnific-popup -->
+    <link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+
+    <!-- Mobirise icons Css -->
+    <link rel="stylesheet" type="text/css" href="css/mobiriseicons.css"> 
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/color/default.css">
+</head>
+<body>
+
+    <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">Loading...</div>
+        </div>
+    </div>
+
+	<!-- Start Navbar -->
+	<nav class="navbar navbar-expand-lg custom-nav navbar-light fixed-top sticky">
+	    <div class="container">
+	        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	            <span class="mdi mdi-menu"></span>
+	        </button>
+	        <div class="collapse navbar-collapse" id="navbarNav">
+	            <ul class="navbar-nav ms-auto" id="main_nav">
+	                <li class="nav-item">
+	                    <a class="nav-link" href="#home">Home</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="#about">About</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="#team">Team</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="#proj">Project</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="#pubs">Publications</a>
+	                </li>
+	                <!--
+                        <li class="nav-item">
+	                    <a class="nav-link" href="#portfolio">Portfolio</a>
+	                </li>
+                    <li class="nav-item">
+	                    <a class="nav-link" href="#contact">Contact</a>
+	                </li>
+                    -->
+	            </ul>
+	        </div>
+	    </div>
+	</nav>
+	<!-- End Navbar -->
+
+
+    <!-- START HOME -->
+    <section class="section jarallax h-100vh align-items-center d-flex" data-jarallax='{"speed": 0.2}' style="background-image: url('images/header-bg.jpg');" id="home">
+        <div class="bg-overlay"></div>
+        <div class="container z-index">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="text-center header-content mx-auto">
+                        <h4 class="text-white first-title mb-4">Welcome to</h4>
+                        <h1 class="header-name text-white mb-0"><u>Se</u>cur<u>e</u> and Soun<u>d</u> Software (SEED) Research Group<br/>
+                        </h1>
+                        <p class="text-white mx-auto header-desc mt-4">
+                            We develop security techniques to secure real-world software systems, providing fundamental security primitives (or seed security techniques). 
+                            We cover diverse topics including identifying and fixing vulnerabilities in critical systems such as autonomous vehicles and drones, investigation and prevention of advanced cyberattacks, and reverse-engineering stealthy and sophisticated malware binaries. 
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>            
+        <div class="scroll_down">
+            <a href="#about" class="scroll">
+                <i class="text-white"></i>
+            </a>
+        </div>
+        <div class="curv-img">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1920 238" enable-background="new 0 0 1920 238" xml:space="preserve">
+                <path fill="#fff" d="M0,0c0,0,888.955,518.735,1920,0c-0.5,149.535,0,238,0,238H0V0z"/>
+            </svg>
+        </div>
+    </section>
+    <!-- END HOME -->
+
+    <!-- START ABOUT -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="mt-3">
+                        <h2><span class="fw-bold">About</span> Us</h2>
+                        <h4 class="mt-4">Secure and Sound Software (<span class="text-custom fw-bold">SEED</span>) Research Group</h4>
+
+                        <p class="text-muted mt-4">
+                        The SEED research group at the University of Maryland is affiliated with the <a href="https://ece.umd.edu/" target=_blank>Department of Eletrical and Computer Engineering (ECE)</a>, the <a href="https://cyber.umd.edu/" target=_blank>Maryland Cybersecurity Center (MC2)</a>, and the <a href="https://www.umiacs.umd.edu/" target=_blank>University of Maryland Institute for Advanced Computer Studies (UMIACS)</a>.
+                        </p>
+                        
+                        <p class="text-muted mt-2">
+                        We thrive to conduct fundamental research that can create impact the practical security. In particular, we focus on finding and patching critical vulnerabilities in complex systems that previous techniques fail to do, investigating sophisticated advanced attacks that existing techniques gave up, and protecting systems against unknown future attacks. 
+                        </p>
+                        <p class="text-muted mt-2">
+                        We focus on "<b>what system to secure</b> and <b>what practical security benefit we can deliver to the society</b>," not the specific techniques required to achieve the goal.
+
+                        In other words, we focus on security problems instead of particular methods for solving the problem. We leverage various and diverse techniques (and are also open to any new emerging techniques), ranging from operating systems, compilers/programming languages, reverse-engineering, network/system modeling, artificial intelligence (AI), and causal analysis/information theory, to name a few, if needed to secure the target system.
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END ABOUT -->
+
+    
+    <!-- START TEAM -->
+    <section class="section bg-light" id="team">
+        <div class="container">   
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <h2><span class="fw-bold">Team</span> Members</h2>                        
+                    </div>
+                </div>
+            </div>                 
+            <div class="row">
+                <div class="col-lg-4 mt-3">
+                    <div class="rounded bg-white p-2">
+                        <div class="content_blog p-3">
+                            <div>
+                                <center><h5 class="fw-bold mb-0">Assistant Professor<br/>Yonghwi Kwon</h5></center>
+                            </div>
+                            <div class="mt-3">
+                                <p class="h6 text-muted date_blog mb-0">Principle Investigator (PI), Director</a></p>
+                                <p class="mt-3 desc_blog text-muted">
+                                - Ph.D., Computer Science, Purdue University (2018).<br/>
+                                </p>
+                                <p class="mt-3 desc_blog text-muted">
+                                Website: <a href="#" class="text-muted fw-bold">http://yongkwon.info</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-3">
+                    <div class="rounded bg-white p-2">
+                        <div class="content_blog p-3">
+                            <div>
+                                <center><h5 class="fw-bold mb-0">Chijung Jung</h5></center>
+                            </div>
+                            <div class="mt-3">
+                                <p class="h6 text-muted date_blog mb-0">Ph.D. Student Joined in 2019 (Post qual.)</p>
+                                <p class="mt-3 desc_blog text-muted">
+                                    Research: Swarm Security/Debugging [FSE'21, S&P'22], Software Security [CCS'21, WISA'22, S&P'23, ICSE'22]
+                                </p>
+                                <p class="mt-3 desc_blog text-muted">
+                                Website: <a href="https://chijung-jung.github.io/" class="text-muted fw-bold">https://chijung-jung.github.io/</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-3">
+                    <div class="rounded bg-white p-2">
+                        <div class="content_blog p-3">
+                            <div>
+                                <center><h5 class="fw-bold mb-0">Ali Ahad</h5></center>
+                            </div>
+                            <div class="mt-3">
+                                <p class="h6 text-muted date_blog mb-0">Ph.D. Student Joined in 2020 (Post qual.)</p>
+                                <p class="mt-3 desc_blog text-muted">
+                                    Research: Software Security [CCS'21, S&P'23, ASPLOS'24], Debugging/Testing [FSE'21, S&P'22]
+                                </p>
+                                <p class="mt-3 desc_blog text-muted">
+                                Website: <a href="https://aliahad97.github.io/" class="text-muted fw-bold">https://aliahad97.github.io/</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-3">
+                    <div class="rounded bg-white p-2">
+                        <div class="content_blog p-3">
+                            <div>
+                                <center><h5 class="fw-bold mb-0">Jiho Lee</h5></center>
+                            </div>
+                            <div class="mt-3">
+                                <p class="h6 text-muted date_blog mb-0">Ph.D. Student Joined in 2021</p>
+                                <p class="mt-3 desc_blog text-muted">
+                                    Research: Software Security [NDSS'23]
+                                </p>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-3">
+                    <div class="rounded bg-white p-2">
+                        <div class="content_blog p-3">
+                            <div>
+                                <center><h5 class="fw-bold mb-0">Hamza Khalid</h5></center>
+                            </div>
+                            <div class="mt-3">
+                                <p class="h6 text-muted date_blog mb-0">Ph.D. Student Joined in 2022</p>
+                                <p class="mt-3 desc_blog text-muted">
+                                    Research: Software Security
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <p class="text-muted mx-auto section-subtitle mt-3">
+                            <b>Alumni</b>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-3">
+                    <div class="rounded bg-white p-2">
+                        <div class="content_blog p-3">
+                            <div>
+                                <center><h5 class="fw-bold mb-0">Ph.D.</h5></center>
+                            </div>
+                            <div class="mt-3">
+                                <p class="h6 text-muted date_blog mb-0">
+                                1. Abbas Naderi (Advisor: Prof. Jack W. Davidson)<br/>
+                                </p>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-3">
+                    <div class="rounded bg-white p-2">
+                        <div class="content_blog p-3">
+                            <div>
+                                <center><h5 class="fw-bold mb-0">Masters</h5></center>
+                            </div>
+                            <div class="mt-3">
+                                <p class="h6 text-muted date_blog mb-0">
+                                1. Bora Lee, 2023 (at Korean Army)<br/>
+                                2. Jiahao Cai, 2019 (at Google)<br/>
+                                </p>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-3">
+                    <div class="rounded bg-white p-2">
+                        <div class="content_blog p-3">
+                            <div>
+                                <center><h5 class="fw-bold mb-0">Undergraduate</h5></center>
+                            </div>
+                            <div class="mt-3">
+                                <p class="h6 text-muted date_blog mb-0">
+                                1. Sungjin Yi, UC Berkeley, 2021-2022<br/>
+                                2. Rajiv Sarvepalli, UVA, 2020<br/>
+                                3. Haoxiang Zhang, UVA, 2021 (at Columbia University)<br/>
+                                </p>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>            
+        </div>
+    </section>
+    <!-- END TEAM -->
+
+    <!-- START PROJECTS -->   
+    <section class="section text-center" id="proj">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <h2>Research <span class="fw-bold">Project</span> Topics</h2>
+                        <p class="text-muted mx-auto section-subtitle mt-3">
+                        Project topics that our group is working on. We are looking for students for all the topics below. <br/>
+                        Please see this page for the recruitment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-lg-4">
+                    <div class="text-center services-boxes rounded p-4 mt-4">
+                        <div class="services-boxes-icon">
+                            <i class="mbri-rocket text-custom display-4"></i>
+                            &nbsp;
+                            <i class="mbri-delivery text-custom display-4"></i>                            
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="mb-0">Cyber Physical Systems Security</h5>
+                            <div class="services-title-border"></div>
+                            <p class="text-muted mt-3">Developing automated testing techniques for drones, drone swarms, and autonomous vehicles to find critical vulnerabilities.</p>
+                            <p class="text-muted mt-3">
+                                Members: Chijung Jung, Ali Ahad<br/>
+                                Publications: S&P'22, CCS'22, FSE'21
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="text-center services-boxes rounded p-4 mt-4">
+                        <div class="services-boxes-icon">
+                            <i class="mbri-magic-stick text-custom display-4"></i>
+                            &nbsp;
+                            <i class="mbri-code text-custom display-4"></i>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="mb-0">Binary Decompilation</h5>
+                            <div class="services-title-border"></div>
+                            <p class="text-muted mt-3">Transforming Python Binaries that existing decompilers failed to enable their decompilation. Automatically synthesizing decompilers via AI and recovering lost semantics from binaries.</p>
+                            <p class="text-muted mt-3">
+                                Members: Ali Ahad, Chijung Jung<br/>
+                                Publications: S&P'23, ICSE'19
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="text-center services-boxes rounded p-4 mt-4">
+                        <div class="services-boxes-icon">
+                            <i class="mbri-sites text-custom display-4"></i>
+                            &nbsp;
+                            <i class="mbri-protect text-custom display-4"></i>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="mb-0">Web Security Analysis/Defense</h5>
+                            <div class="services-title-border"></div>
+                            <p class="text-muted mt-3">Developing security analysis techniques (e.g., fuzzing) to identify vulnerabilities and defences against paylaod injection attacks for web server applications.</p>
+                            <p class="text-muted mt-3">
+                                Members: Chijung Jung, Jiho Lee<br/>
+                                Publications: NDSS'23, ICSE'23, CCS'21
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="text-center services-boxes rounded p-4 mt-4">
+                        <div class="services-boxes-icon">
+                            <i class="mbri-target text-custom display-4"></i>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="mb-0">Cyber Forensics (Malware/Attack Analysis)</h5>
+                            <div class="services-title-border"></div>
+                            <p class="text-muted mt-3">Developing techniques that discover stealthy behaviors of advanced malware, reproduce/replay cyberattacks, and reconstruct attack behaviors from logs.</p>
+                            <p class="text-muted mt-3">
+                                Members: Abbas Naderi<br/>
+                                Publications: NDSS'21, CCS'19, NDSS'18
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="text-center services-boxes rounded p-4 mt-4">
+                        <div class="services-boxes-icon">
+                            <i class="mbri-layers text-custom display-4"></i>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="mb-0">AI/ML Library Partitioning</h5>
+                            <div class="services-title-border"></div>
+                            <p class="text-muted mt-3">
+                                Mitigate cyberattcks on AI/ML libraries by automatically partitioning and isolating the libraries' code. Attacks will be confined within the isolated compartments.
+                            </p>
+
+                            <p class="text-muted mt-3">
+                                Members: Ali Ahad<br/>
+                                Publications: ASPLOS'24
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="text-center services-boxes rounded p-4 mt-4">
+                        <div class="services-boxes-icon">
+                            <i class="mbri-magic-stick text-custom display-4"></i>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="mb-0">Program Debugging/Synthesis</h5>
+                            <div class="services-title-border"></div>
+                            <p class="text-muted mt-3">Developing cross platform debugging techniques via binary translation. Sythesizing programs from traces by aligning data/code between executions.</p>
+                            <p class="text-muted mt-3">
+                                Members: Chijung Jung, Ali Ahad<br/>
+                                Publications: FSE'21, ISSTA'17, ASE'13, 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END PROJECTS -->
+
+
+    <!-- START PUBLICATIONS -->
+    <section class="section bg-light" id="pubs">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <h2><span class="fw-bold">Publications</span></h2>
+                        <p class="text-muted mx-auto section-subtitle mt-3">Top-tier conferences: XXX</p>
+                    </div>
+                </div>
+            </div>             
+        </div>
+    </section>
+    <!-- END CONTACT -->
+
+    <!--START FOOTER-->
+    <footer class="footer bg-light">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-md-12">
+                    <div class="text-center text-white footer-alt">
+                        <ul class="list-unstyled list-inline mb-0">
+                            <li class="list-inline-item"><a href="#"><i class="mdi mdi-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="mdi mdi-linkedin"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="mdi mdi-twitter"></i></a></li>
+                        </ul>
+                        <p class="copyright_content mb-0 mt-3"> The SEED Research Group at the University of Maryland, 2018 - 2023. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--END FOOTER-->
+    
+
+    <!-- Back To Top -->    
+    <a href="#" class="back_top"> <i class="mdi mdi-chevron-up"> </i> </a>
+
+
+	<!--All Javascript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    
+    <!-- Text Type -->
+    <script src="js/typed.js"></script>
+    
+    <!-- Owl Carousel -->
+    <script src="js/owl.carousel.min.js"></script>
+
+    <!-- Contact Js -->
+    <script src="js/contact.js"></script>
+    
+    <!-- Work Filter -->
+    <script src="js/isotope.js"></script>
+
+    <!-- Parallax Js -->
+    <script src="js/parallax.js"></script> 
+
+    <!-- Magnific Popup Js -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+
+	<!-- Custom Js -->
+	<script src="js/custom.js"></script>
+    
+</body>
+</html>
