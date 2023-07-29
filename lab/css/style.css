@@ -22,7 +22,9 @@
     12.RESPONSIVE
 ************************/
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600|Nunito:400,600,700');
+@import url(../../fonts/fontawesome-free/css/all.min.css);
+@import url('../../css/fonts_lab.css');
+
 
 
 /*======================
@@ -744,3 +746,7 @@ button:focus {
         max-width: 1140px !important;
     }
 }
+
+#journal,#sectier,#toptier{border-radius:3px;padding:1px 6px;text-decoration:none}
+#author{color:#000;text-decoration:none;background-position-y:-0%;background-image:linear-gradient(#edfdfc 50%,#99a6ab 10%);background-size:auto 188%}#toptier{color:#fff;background:#0466c8}#sectier{color:#000;background:#D0EBFF;border-style: solid;border-color:#219ebc;border-width:0.5px}#journal{color:#000;background:#ffe97f}
+.paper-title{font-size:15px;margin:10px 0 0}.pub-author-list{border-left:2px solid;color:#aaa;margin:3px 5px;padding:0 5px}.paper-author,.vertbar{border-left:1mm solid silver;margin-top:0;margin-left:15px;padding-left:10px}#flimg{float:right;margin:0 0 0 15px}
