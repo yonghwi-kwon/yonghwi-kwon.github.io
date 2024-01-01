@@ -9,3 +9,4 @@ sudo apt-get install libncurses5-dev libncursesw5-dev
 ./autogen.sh
 ./configure
 make
+./moon-buggy
