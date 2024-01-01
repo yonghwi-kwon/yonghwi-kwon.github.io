@@ -14,4 +14,4 @@ echo "cd $PWD" >> ~/.bashrc
 echo "source $PWD/pin.env" >> ~/.bashrc
 echo "cd" >> ~/.bashrc
 
-echo "Please type `source pin.env` on the terminal or restart the terminal window."
+echo "Please (a) type 'source pin/pin.env' on the terminal or (b) restart the terminal window."
