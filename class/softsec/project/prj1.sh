@@ -1,6 +1,6 @@
 mkdir prj1
 cd prj1
-wget https://yonghwi-kwon.github.io/class/softsec/project/moon-buggy-master.zip
+wget https://yonghwi-kwon.github.io/class/softsec/project/moon-buggy.zip
 unzip moon-buggy-master.zip
 
 sudo apt-get install autoconf automake texinfo
