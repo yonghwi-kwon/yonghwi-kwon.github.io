@@ -1,0 +1,135 @@
+<html>
+<style>
+.inputtext { 
+    font-size:1.5em;
+	height: 100%; 
+    width: 100%; 
+} 
+.outputtext {
+    font-size:1.5em;
+    height: 100%;
+    width: 100%;
+    background-color:silver;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 1px;
+}
+</style>
+
+<body>
+<table>
+<tr>
+<td><textarea name="txtInput" id="txtInput" class="inputtext"></textarea>
+</td>
+<td><textarea name="txtOutput" id="txtOutput" class="outputtext" readonly></textarea>
+</td>
+</tr>
+</table>
+
+<script language="javascript">
+navigator.clipboard
+  .readText()
+  .then(
+    (clipText) => (process(clipText)),
+  );
+</script>
+
+<script language="javascript">
+var macros = [  "\\sys", "Scavy", 
+                "\n", " ", 
+                "  ", " "];
+var escapes = ["\\_", "_"];
+var cmds = ["\\texttt{", "\\para{", "\\it{", "\\emph{"];
+var concretize = ["\\autoref{"];
+function replace_macros(text)
+{
+    for(let i = 0; i < macros.length; i++) {
+        text = text.replaceAll(macros[i], macros[i+1]);
+        i++;
+    }
+    return text;
+}
+function replace_escapes(text)
+{
+    for(let i = 0; i < escapes.length; i++) {
+        text = text.replaceAll(escapes[i], escapes[i+1]);
+        i++;
+    }
+    return text;
+}
+function remove_cmds(text)
+{
+    for(let i = 0; i < cmds.length; i++) {
+        idx = text.indexOf(cmds[i]);
+        idxEnd = text.indexOf("}", idx+1);
+        if (idx == -1 || idxEnd == -1) continue;
+        
+        before = text.substr(0, idx);
+        inside = text.substr(idx + cmds[i].length, idxEnd - (idx + cmds[i].length));
+        after = text.substr(idxEnd + 1);
+        
+        text = before + inside + after;
+        //console.log("before: '" + before + "'");
+        //console.log("inside: '" + inside + "'");
+        //console.log("after: '" + after + "'");
+        i--;
+    }
+    return text;
+}
+function concretize_cmds(text)
+{
+    for(let i = 0; i < concretize.length; i++) {
+        idx = text.indexOf(concretize[i]);
+        idxEnd = text.indexOf("}", idx+1);
+        if (idx == -1 || idxEnd == -1) continue;
+        
+        before = text.substr(0, idx);
+        inside = text.substr(idx + cmds[i].length, idxEnd - (idx + cmds[i].length));
+        after = text.substr(idxEnd + 1);
+        
+        if( inside.indexOf("fig") != -1 ) inside = "Figure 1";
+        else if( inside.indexOf("tab") != -1 ) inside = "Table 1";
+        else if( inside.indexOf("lst") != -1 ) inside = "List 1";
+        else inside = "Figure 0";
+        
+        text = before + inside + after;
+        //console.log("before: '" + before + "'");
+        //console.log("inside: '" + inside + "'");
+        //console.log("after: '" + after + "'");
+        i--;
+    }
+    return text;
+}
+function process(clipText)
+{
+    document.getElementById('txtInput').value = clipText;
+    t = clipText;
+    
+    t = replace_macros(t);
+    t = remove_cmds(t);
+    t = replace_escapes(t);
+    t = concretize_cmds(t);
+    
+    document.getElementById('txtOutput').value = t;
+    
+    setClipboard(t);
+}
+async function setClipboard(text) {
+  const type = "text/plain";
+  const blob = new Blob([text], { type });
+  const data = [new ClipboardItem({ [type]: blob })];
+  await navigator.clipboard.write(data);
+}
+
+</script>
+
+</body>
+</html>
