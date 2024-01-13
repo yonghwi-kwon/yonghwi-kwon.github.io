@@ -48,7 +48,7 @@ var macros = [  "\\sys", "Scavy",
                 "  ", " "];
 var escapes = ["\\_", "_"];
 var cmds = ["\\texttt{", "\\para{", "\\it{", "\\emph{"];
-var concretize = ["\\autoref{"];
+var concretize = ["\\autoref{", "\\blkcc"];
 function replace_macros(text)
 {
     for(let i = 0; i < macros.length; i++) {
@@ -94,11 +94,15 @@ function concretize_cmds(text)
         before = text.substr(0, idx);
         inside = text.substr(idx + cmds[i].length, idxEnd - (idx + cmds[i].length));
         after = text.substr(idxEnd + 1);
-        
-        if( inside.indexOf("fig") != -1 ) inside = "Figure 1";
-        else if( inside.indexOf("tab") != -1 ) inside = "Table 1";
-        else if( inside.indexOf("lst") != -1 ) inside = "List 1";
-        else inside = "Figure 0";
+
+        if( concretize[i] == "\\autoref{" ) {
+            if( inside.indexOf("fig") != -1 ) inside = "Figure 1";
+            else if( inside.indexOf("tab") != -1 ) inside = "Table 1";
+            else if( inside.indexOf("lst") != -1 ) inside = "List 1";
+            else inside = "Figure 0";
+        } else if ( concretize[i] == "\\blkcc" ) {
+            inside = "(" + inside + ")";
+        }
         
         text = before + inside + after;
         //console.log("before: '" + before + "'");
