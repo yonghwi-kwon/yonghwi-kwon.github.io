@@ -44,10 +44,11 @@ navigator.clipboard
 
 <script language="javascript">
 var macros = [  "\\sys", "Scavy", 
+                "\\ie", "i.e.",
                 "\n", " ", 
                 "  ", " "];
 var escapes = ["\\_", "_"];
-var cmds = ["\\texttt{", "\\para{", "\\it{", "\\emph{"];
+var cmds = ["\\texttt{", "\\para{", "\\it{", "\\emph{", "{\\bf"];
 var concretize = ["\\autoref{", "\\blkcc"];
 function replace_macros(text)
 {
