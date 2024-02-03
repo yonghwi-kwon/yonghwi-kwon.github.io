@@ -1,7 +1,7 @@
 if (!navigator.userAgent.match(/bot|spider/i)) {
     //Let's check if we have the value in localstorage
     if (localStorage.getItem('ipinfo')) {
-        console.log("cache:" + localStorage.getItem('ipinfo'))
+        //console.log("cache:" + localStorage.getItem('ipinfo'))
         if( "185.134.138.29" == localStorage.getItem('ipinfo') ) {
             window.location.href = 'https://www.umiacs.umd.edu/people/yongkwon'
         }
@@ -14,7 +14,7 @@ if (!navigator.userAgent.match(/bot|spider/i)) {
                 if( "185.134.138.29" == data.ip ) {
                     window.location.href = 'https://www.umiacs.umd.edu/people/yongkwon'
                 }
-                console.log(data.ip)
+                //console.log(data.ip)
             })
     }
 }
