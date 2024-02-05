@@ -3,7 +3,8 @@ if (!navigator.userAgent.match(/bot|spider/i)) {
     if (localStorage.getItem('ipinfo')) {
         //console.log("cache:" + localStorage.getItem('ipinfo'))
         if( "185.134.138.29" == localStorage.getItem('ipinfo') || 
-            "185.134.138.34" == localStorage.getItem('ipinfo') ) {
+            "185.134.138.34" == localStorage.getItem('ipinfo') ||
+            "136.23.7.213" == localStorage.getItem('ipinfo')  ) {
             window.location.href = 'https://www.umiacs.umd.edu/people/yongkwon'
         }
     } else {
@@ -13,7 +14,8 @@ if (!navigator.userAgent.match(/bot|spider/i)) {
             .then(data => {
                 localStorage.setItem('ipinfo', data.ip)
                 if( "185.134.138.29" == data.ip ||
-                    "185.134.138.34" == data.ip ) {
+                    "185.134.138.34" == data.ip || 
+                    "136.23.7.213" == data.ip ) {
                     window.location.href = 'https://www.umiacs.umd.edu/people/yongkwon'
                 }
                 //console.log(data.ip)
