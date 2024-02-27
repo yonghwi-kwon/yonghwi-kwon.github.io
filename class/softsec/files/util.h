@@ -70,12 +70,14 @@ void LogData(VOID* addr, UINT32 size)
 typedef struct tag_IMAGELOAD_ARG {
     FP_RTN_CALLBACK fpCallback;
     map<ADDRINT, IMAGEINFO*> *pMap;
+    RTNINFO* pMainRtn;
 } IMAGELOAD_ARG;
 
 class CUtilImage {
 public:
     CUtilImage() {
         m_bInited = FALSE;
+        m_pMainRtn = 0;
     };
     ~CUtilImage() {
         m_bInited = FALSE;
@@ -96,6 +98,55 @@ public:
             return p->bMainExec;
         }
         return FALSE;
+    }
+
+    const char* GetImageName(ADDRINT addr)
+    {
+        IMAGEINFO* p = GetImageInfo(addr);
+        if( p ) {
+            return p->name.c_str();
+        }
+        return "unknown";
+    }
+
+    int IsMainRoutine(ADDRINT addr) 
+    {
+        RTNINFO* p = GetMainRoutineInfo();
+        if( p ) {
+            if( p->addr <= addr && addr < (p->addr + p->size) ) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    RTNINFO* GetMainRoutineInfo()
+    {
+        map<ADDRINT, IMAGEINFO*>::iterator it;
+
+        if( m_pMainRtn ) {
+            return m_pMainRtn;
+        }
+
+        for( it = m_mapImage.begin(); it != m_mapImage.end(); it++ ){
+            IMAGEINFO* p = it->second;
+
+            if( p->bMainExec ) {
+                vector<RTNINFO*>::iterator itr; // vtRoutine;    
+                for( itr = p->vtRoutine.begin(); itr != p->vtRoutine.end(); itr++ ){
+                    RTNINFO* pRtn = *itr;
+
+                    if( pRtn ) {
+                        if( strcmp( pRtn->name.c_str(), "main" ) == 0 ) {
+                            m_pMainRtn = pRtn;
+                            break;
+                        }
+                    }
+                }
+                break;
+            }
+        }
+        return m_pMainRtn;
     }
 
 
@@ -128,11 +179,13 @@ private:
                 p->addr = RTN_Address( rtn );
                 p->size = RTN_Size( rtn );
 
-                Log("Routine: %s, %lx, %ld\n", p->name.c_str(), p->addr, p->size);
+                //Log("Routine: %s, %lx, %ld\n", p->name.c_str(), p->addr, p->size);
                 
                 pImg->vtRoutine.push_back( p );
                 
-                pImageLoadArg->fpCallback(p, img, rtn);
+                if( pImageLoadArg->fpCallback ) {
+                    pImageLoadArg->fpCallback(p, img, rtn);
+                }
             }
         }
     }
@@ -156,7 +209,7 @@ private:
             p->bMainExec = IMG_IsMainExecutable(img);
             pmapImage->insert( make_pair(addrLow, p) );
 
-            Log("Image: %s, %lx ~ %lx, %ld, %d\n", p->name.c_str(), p->addrLow, p->addrHigh, p->size, p->bMainExec);
+            //Log("Image: %s, %lx ~ %lx, %ld, %d\n", p->name.c_str(), p->addrLow, p->addrHigh, p->size, p->bMainExec);
         }
         return p;
     }
@@ -164,4 +217,5 @@ private:
     BOOL m_bInited;
     map<ADDRINT, IMAGEINFO*> m_mapImage;
     IMAGELOAD_ARG m_stImageLoadArg;
+    RTNINFO* m_pMainRtn;
 };
