@@ -50,7 +50,7 @@ var macros = [  "\\sys", "Scavy",
                 "  ", " "];
 var escapes = ["\\_", "_"];
 var cmds = ["\\texttt{", "\\textbf{", "\\para{", "\\it{", "\\emph{", "{\\bf", "\\cc{"];
-var concretize = ["\\autoref{", "\\blkcc", "\\BC"];
+var concretize = ["\\autoref{", "\\blkcc", "\\BC", "\\cite{"];
 function replace_macros(text)
 {
     for(let i = 0; i < macros.length; i++) {
@@ -106,6 +106,8 @@ function concretize_cmds(text)
             inside = "(" + inside + ")";
         } else if ( concretize[i] == "\\BC" ) {
             inside = "(" + inside + ")";
+        } else if ( concretize[i] == "\\cite{" ) {
+            inside = "[0]";
         }
         
         text = before + inside + after;
