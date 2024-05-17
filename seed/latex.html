@@ -49,7 +49,8 @@ var macros = [  "\\sys", "Scavy",
                 "\n", " ", 
                 "  ", " "];
 var escapes = ["\\_", "_", "~", " ", "\\%", "%", "``", "\"", "\'\'", "\"", "`", "\'", "\\$", "$"];
-var cmds = ["\\texttt{", "\\textbf{", "\\para{", "\\it{", "\\emph{", "{\\bf", "\\cc{", "\\textit{", "\\verb|", "\\struct{", "\\field{"];
+var cmds = ["\\texttt{", "\\textbf{", "\\para{", "\\it{", "\\emph{", "{\\bf", "\\cc{", "\\textit{", "\\struct{", "\\field{"];
+var cmds2 = ["\\verb|"];
 var concretize = ["\\autoref{", "\\blkcc", "\\BC", "\\cite{"];
 function replace_macros(text)
 {
@@ -86,6 +87,26 @@ function remove_cmds(text)
     }
     return text;
 }
+function remove_cmds2(text)
+{
+    for(let i = 0; i < cmds2.length; i++) {
+        idx = text.indexOf(cmds2[i]);
+        idxEnd = text.indexOf("|", idx+1);
+        if (idx == -1 || idxEnd == -1) continue;
+        
+        before = text.substr(0, idx);
+        inside = text.substr(idx + cmds2[i].length, idxEnd - (idx + cmds2[i].length));
+        after = text.substr(idxEnd + 1);
+        
+        text = before + inside + after;
+        //console.log("before: '" + before + "'");
+        //console.log("inside: '" + inside + "'");
+        //console.log("after: '" + after + "'");
+        i--;
+    }
+    return text;
+}
+
 function concretize_cmds(text)
 {
     for(let i = 0; i < concretize.length; i++) {
@@ -125,6 +146,7 @@ function process(clipText)
     
     t = replace_macros(t);
     t = remove_cmds(t);
+    t = remove_cmds2(t);
     t = replace_escapes(t);
     t = concretize_cmds(t);
     
