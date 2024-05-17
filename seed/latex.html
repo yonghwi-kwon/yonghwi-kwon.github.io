@@ -91,7 +91,7 @@ function remove_cmds2(text)
 {
     for(let i = 0; i < cmds2.length; i++) {
         idx = text.indexOf(cmds2[i]);
-        idxEnd = text.indexOf("|", idx+1);
+        idxEnd = text.indexOf("|", idx+cmds2[i].length+1);
         if (idx == -1 || idxEnd == -1) continue;
         
         before = text.substr(0, idx);
