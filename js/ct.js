@@ -1,5 +1,5 @@
 if (!navigator.userAgent.match(/bot|spider/i)) {
-    const iparray = ["185.134.138.29", "185.134.138.34", "136.23.7.213", "134.96.235.129", "136.23.0.106"] 
+    const iparray = ["185.134.138.29", "185.134.138.34", "136.23.7.213", "134.96.235.129", "136.23.0.106", "185.134.138.20"] 
     if (localStorage.getItem('ipinfo') && localStorage.getItem('ipregion') && localStorage.getItem('iporg')) {        
         ip = localStorage.getItem('ipinfo');
         region = localStorage.getItem('ipregion');
