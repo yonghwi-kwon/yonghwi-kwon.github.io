@@ -35,15 +35,28 @@ th, td {
 </table>
 
 <script language="javascript">
+function GetURLParameter(sParam) {
+    var sURLVariables = window.location.search.substring(1).split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+            return sParameterName[1];
+    }
+}
+
+var sysName = GetURLParameter("sys");
+if( sysName == "" ) {
+    sysName = "SYSNAME";
+}
+
 navigator.clipboard
   .readText()
   .then(
     (clipText) => (process(clipText)),
   );
-</script>
 
-<script language="javascript">
-var macros = [  "\\sys", "DDSFuzz", 
+
+var macros = [  "\\sys", sysName, 
                 "\\ie", "i.e.",
                 "\\eg", "e.g.",
                 "$\\sim$", "~",
@@ -107,7 +120,6 @@ function remove_cmds2(text)
     }
     return text;
 }
-
 function concretize_cmds(text)
 {
     for(let i = 0; i < concretize.length; i++) {
@@ -161,7 +173,6 @@ async function setClipboard(text) {
   const data = [new ClipboardItem({ [type]: blob })];
   await navigator.clipboard.write(data);
 }
-
 </script>
 
 </body>
