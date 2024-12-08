@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+    <title>Ghidra Decompiler</title>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<script>
+function fn(btn) {
+  element = document.getElementById('btnc');
+  element.classList.remove("w3-amber");
+  element.classList.add("w3-black");
+  element = document.getElementById('btns');
+  element.classList.remove("w3-amber");
+  element.classList.add("w3-black");
+  element = document.getElementById('btnp');
+  element.classList.remove("w3-amber");
+  element.classList.add("w3-black");
+  element = document.getElementById('btnh');
+  element.classList.remove("w3-amber");
+  element.classList.add("w3-black");
+  
+  element = document.getElementById(btn);
+  element.classList.add("w3-amber");
+  element.classList.remove("w3-black");
+}
+</script>
+    <div class="first-row">
+        <center>
+        <div class="menu">
+            <font size=5>
+            <a href="https://hackmd.io/@yonghwikwon/SyruKHzNke" target="cfr" class="w3-button w3-amber" style="border-radius: 8px;" id="btnc"  onclick="javascript:fn('btnc');">Trans.</a> 
+            <a href="https://hackmd.io/@yonghwikwon/SyMWpSGEke" target="cfr" class="w3-button w3-black" style="border-radius: 8px;" id="btns" onclick="javascript:fn('btns');">Assignments</a>             
+            </font>
+        </div>
+        </center>
+    </div>
+    <div class="second-row">
+      <iframe name="cfr" src="https://hackmd.io/@yonghwikwon/SyruKHzNke"></iframe>
+    </div>
+
+    
+    <div class="iframe-container">
+        
+      </div>
+
+</body>
+</html>

@@ -1,0 +1,731 @@
+
+@import "compass/css3";
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+
+body, html {width: 100%; height: 100%; margin: 0; padding: 0; font-family: 'Roboto Condensed', sans-serif;}
+.first-row {position: absolute;top: 0; left: 0; right: 0; height: 70px; background-color: #EDEDED; text-align: center; }
+.second-row {position: absolute; top: 70px; left: 0; right: 0; bottom: 0; background-color: #EDEDED; }
+.second-row iframe {display: block; width: 100%; height: 100%; border: none;}
+.menu{
+    display: table-cell;
+    width: 100%;
+    height: 70px;
+    padding: 0px;
+    border: 0px;
+    vertical-align: middle;
+    text-align: center; 
+    border-radius: 8px;
+}
+
+
+
+// The micro clearfix 
+// ------------------
+@mixin clearfix { 
+	*zoom:1;
+    &:before, &:after { 
+		content: ""; 
+		display: table; 
+	}
+    &:after { 
+		clear: both; 
+	}
+}
+
+
+a{
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size:20px;
+   text-decoration:none;
+}
+
+
+.links{
+	@include clearfix;
+	padding:50px;
+	@include box-sizing(border-box);
+	text-align: center;
+	background: #313131;
+
+}
+
+.link-effect-1 {
+	text-align:center;
+	a {
+		@include perspective(900px);
+		color: white;
+		font-family: 'Roboto Condensed', sans-serif;
+		font-size:20px;
+		line-height: 44px;
+		 span {
+			position: relative;
+			padding: 0 14px;
+			background: #797878;
+			@include inline-block;
+			@include transition (.3s);
+			@include transform-origin (50% 0);
+			@include transform-style (preserve-3d);
+			&::before {
+				position: absolute;
+				top: 100%;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: #565555;
+				content: attr(data-hover);
+				@include transition (background .3s);
+				@include transform (rotateX(-90deg));
+				@include transform-origin (50% 0);
+			}
+		}
+		&:hover,
+		&:focus{
+			span{
+				@include transform (rotateX(90deg) translateY(-22px));
+				&::before{
+					background: #666464;	
+
+				}
+			}
+		}
+	}
+}
+
+/* Effect 5: same word slide in */
+.link-effect-2{
+	overflow: hidden;
+	a {
+		overflow: hidden;
+		padding: 20px;
+		height: 1em;
+		color: #797878;
+		font-weight: 400;
+		 span {
+			position: relative;
+			display: inline-block;
+			@include transition(.3s);
+			&::before {
+				color: white;
+				position: absolute;
+				top: 100%;
+				content: attr(data-hover);
+				font-weight: 800;
+				@include transform(translate3d(0,0,0));
+			}
+		}
+		&:hover{
+			span{
+				@include transform(translateY(-100%));
+			}
+		}
+	}
+} 
+
+
+
+
+.link-effect-3 {
+	a {
+		padding: 10px 0;
+		margin: 0 20px;
+		color: #797878;
+		text-shadow: none;
+		position: relative;
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			overflow: hidden;
+			padding: 10px 0;
+			max-width: 0;
+			border-bottom: 2px solid #fff;
+			color: #fff;
+			content: attr(data-hover);
+			-webkit-transition: max-width 0.5s;
+			-moz-transition: max-width 0.5s;
+			transition: max-width 0.5s;
+		}
+		&:hover{
+			&::before{
+				max-width: 100%;
+			}
+		}
+	}
+} 
+
+
+
+.link-effect-4 {
+	a {
+		padding: 0 10px;
+		margin: 0 20px;
+		color: #797878;
+		text-shadow: none;
+		position: relative;
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			overflow: hidden;
+			padding: 0 10px;
+			max-height: 0;
+			// border-bottom: 2px solid #fff;
+			color: #fff;
+			content: attr(data-hover);
+			-webkit-transition: max-height 0.5s;
+			-moz-transition: max-height 0.5s;
+			transition: max-height 0.5s;
+		}
+		&:hover{
+			&::before{
+				max-height: 100%;
+			}
+		}
+	}
+} 
+
+
+.link-effect-5 {
+	a {
+		padding: 0 10px;
+		margin: 0 20px;
+		color: #797878;
+		text-shadow: none;
+		position: relative;
+		// @include transition(.3s);
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			overflow: hidden;
+			padding: 0 10px;
+			color: #fff;
+			content: attr(data-hover);
+			@include transition(.3s ease-out);
+			@include scale(1.4);
+			opacity: 0;
+			
+		}
+		&:hover{
+			&::before{
+				@include scale(1);
+				opacity: 1;
+			}
+		}
+	}
+} 
+
+.link-effect-6 {
+	a {
+		color: rgba(0,0,0,0.4);
+		font-weight: 700;
+		text-shadow: none;
+		margin: 0 20px;
+		&::before {
+			color: #797878;
+			content: attr(data-hover);
+			position: absolute;
+			-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+			-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+			transition: transform 0.3s, opacity 0.3s;
+		}
+		&:hover{
+			&::before {
+				-webkit-transform: scale(0.9);
+				-moz-transform: scale(0.9);
+				transform: scale(0.9);
+				opacity: 0;
+			}
+		}
+	}
+}
+
+.link-effect-7 {
+	@include perspective(900px);
+	a {
+		color: rgba(0,0,0,0.4);
+		font-weight: 700;
+		text-shadow: none;
+		margin: 0 20px;
+		@include transition (.3s);
+		&::before {
+			color: white;
+			content: attr(data-hover);
+			position: absolute;
+			@include transition (.3s);
+			@include transform-origin (50% 0);
+			@include transform-style (preserve-3d);
+
+		}
+		&:hover{
+			color: #797878;
+			&::before {
+				@include transform (translateY(22px) rotateX(-90deg));
+			}
+		}
+	}
+}
+
+
+.link-effect-8 {
+	a {
+		color: #797878;
+		margin: 0 20px;
+		padding: 5px 0;
+		position: relative;
+		@include transition(.3s ease-out .1s);
+		&::before {
+			height: 2px;
+			width: 100%;
+			background: #797878;
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			visibility: hidden;
+			@include transition (.3s);
+
+		}
+		&::after {
+			height: 2px;
+			width: 100%;
+			background: #797878;
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 100%;
+			visibility: hidden;
+			@include transition (.3s);
+		}
+		&:hover{
+			color: white;
+			&::before {
+				visibility: visible;
+				top: 100%;
+				background: white;
+				
+			}
+			&::after {
+				visibility: visible;
+				top: 0;
+				background: white;
+			}
+		}
+	}
+}
+
+
+
+
+.link-effect-9 {
+	a {
+		color: #797878;
+		margin: 0 20px;
+		padding: 10px 0;
+		position: relative;
+		@include transition(.3s ease-out .1s);
+		&::after {
+			height: 2px;
+			width: 100%;
+			background: white;
+			content: "";
+			position: absolute;
+			left: 0px;
+			bottom: 0;
+			@include scaleX(0);
+			@include transition (.3s);
+		}
+		&:hover{
+			&::after {
+				@include scaleX(1);
+				
+			}
+		}
+	}
+}
+
+
+
+.link-effect-10 {
+	a {
+		color: #797878;
+		margin: 0 20px;
+		padding: 10px;
+		position: relative;
+		@include transition(.3s ease-out .1s);
+		span{
+			&::before{
+				height: 100%;
+				width: 2px;
+				background: white;
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				@include scaleY(0);
+				@include transition (.3s);
+			}
+			&::after{
+				height: 100%;
+				width: 2px;
+				background: white;
+				content: "";
+				position: absolute;
+				right: 0;
+				top: 0;
+				@include scaleY(0);
+				@include transition (.3s);
+			}
+		}
+		&::before {
+			height: 2px;
+			width: 100%;
+			background: white;
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			@include scaleX(0);
+			@include transition (.3s);
+		}
+		&::after {
+			height: 2px;
+			width: 100%;
+			background: white;
+			content: "";
+			position: absolute;
+			left: 0px;
+			bottom: 0;
+			@include scaleX(0);
+			@include transition (.3s);
+		}
+		&:hover{
+			color: white;
+			&::before,
+			&::after {
+				@include scaleX(1);
+			}
+			span{
+				&::before,
+				&::after {
+				@include scaleY(1);
+				}
+			}
+		}
+	}
+}
+
+
+.link-effect-11 {
+	a {
+		color: #797878;
+		margin: 0 20px;
+		padding: 10px;
+		position: relative;
+		overflow: hidden;
+		display: inline-block;
+		@include transition(.3s ease-out .1s);
+		span{
+			&::before{
+				width: 100%;
+				height: 2px;
+				background: white;
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				@include transition (.3s);
+				@include translateX (-100%);
+			}
+			&::after{
+				width: 100%;
+				height: 2px;
+				background: white;
+				content: "";
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				@include transition (.3s);
+				@include translateX (100%);
+
+			}
+		}
+		&::before {
+			width: 2px;
+			height: 100%;
+			background: white;
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			@include translateY (-100%);
+			@include transition (.3s);
+		}
+		&::after {
+			width: 2px;
+			height: 100%;
+			background: white;
+			content: "";
+			position: absolute;
+			right: 0px;
+			bottom: 0;
+			@include translateY (100%);
+			@include transition (.3s);
+		}
+		&:hover{
+			color: white;
+			&::before,
+			&::after {
+				@include translateX (0);
+			}
+			span{
+				&::before,
+				&::after {
+				@include translateX (0);
+				}
+			}
+		}
+	}
+}
+
+.link-effect-12 {
+	a {
+		color: #797878;
+		margin: 0 20px;
+		padding: 10px;
+		position: relative;
+		overflow: hidden;
+		display: inline-block;
+		@include transition(.3s ease-out .1s);
+		span{
+			&::before{
+				width: 100%;
+				height: 2px;
+				background: white;
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				@include transition (.1s);
+				@include translateX (-100%);
+			}
+			&::after{
+				width: 100%;
+				height: 2px;
+				background: white;
+				content: "";
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				@include transition (.1s .2s);
+				@include translateX (100%);
+
+			}
+		}
+		&::before {
+			width: 2px;
+			height: 100%;
+			background: white;
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			@include translateY (100%);
+			@include transition (.1s .3s);
+
+		}
+		&::after {
+			width: 2px;
+			height: 100%;
+			background: white;
+			content: "";
+			position: absolute;
+			right: 0px;
+			bottom: 0;
+			@include translateY (-100%);
+			@include transition (.1s .1s);
+
+		}
+		&:hover{
+			color: white;
+			&::before,
+			&::after {
+				@include translateX (0);
+			}
+			span{
+				&::before,
+				&::after {
+				@include translateX (0);
+				}
+			}
+		}
+	}
+}
+
+.link-effect-13 {
+	a {
+		color: #797878;
+		margin: 0 20px;
+		padding: 10px;
+		position: relative;
+		overflow: hidden;
+		display: inline-block;
+		@include transition(.3s ease-out .3s);
+		span{
+			&::before{
+				width: 100%;
+				height: 2px;
+				background: white;
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				@include translateX (-100%);
+				@include transition (.3s);
+			}
+			&::after{
+				width: 100%;
+				height: 2px;
+				background: white;
+				content: "";
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				@include translateX (100%);
+				@include transition (.3s);
+			}
+		}
+		&::before {
+			width: 2px;
+			height: 100%;
+			background: white;
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			@include translateY (100%);
+			@include transition (.3s);
+
+		}
+		&::after {
+			width: 2px;
+			height: 100%;
+			background: white;
+			content: "";
+			position: absolute;
+			right: 0px;
+			bottom: 0;
+			@include translateY (-100%);
+			@include transition (.3s);
+
+		}
+		&:hover{
+			color: white;
+			&::before,
+			&::after {
+				@include translateX (0);
+			}
+			span{
+				&::before,
+				&::after {
+				@include translateX (0);
+				}
+			}
+		}
+	}
+}
+
+
+
+.link-effect-14 {
+	a {
+		color: #797878;
+		margin: 0 20px;
+		padding: 10px 20px;
+		position: relative;
+		overflow: hidden;
+		display: inline-block;
+		@include transition(.3s ease-out);
+		span{
+			&::before{
+				width: 5px;
+				height: 5px;
+				background: transparent;
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				border-top: 2px solid white;
+				border-left: 2px solid white;
+				@include transition (.3s);
+				opacity: 0;
+			}
+			&::after{
+				width: 5px;
+				height: 5px;
+				background: transparent;
+				content: "";
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				border-right: 2px solid white;
+				border-bottom: 2px solid white;
+				@include transition (.3s);
+				opacity: 0;
+
+			}
+		}
+		&::before {
+			width: 5px;
+			height: 5px;
+			background: transparent;
+			content: "";
+			position: absolute;
+			right: 0;
+			top: 0;
+			border-right: 2px solid white;
+			border-top: 2px solid white;
+			@include transition (.3s);
+			opacity: 0;
+		}
+		&::after {
+			width: 5px;
+			height: 5px;
+			background: transparent;
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			border-left: 2px solid white;
+			border-bottom: 2px solid white;
+			@include transition (.3s);
+			opacity: 0;
+		}
+		&:hover{
+			color: white;
+			&::before{
+				opacity: 1;
+				right: 5px;
+				top: 5px;
+			}
+			&::after{
+				opacity: 1;
+				left: 5px;
+				bottom: 5px;
+			}
+			span{
+				&::before{
+					opacity: 1;
+					left: 5px;
+					top: 5px;
+				}
+				&::after{
+					opacity: 1;
+					right: 5px;
+					bottom: 5px;
+				}
+			}
+		}
+	}
+}
+
