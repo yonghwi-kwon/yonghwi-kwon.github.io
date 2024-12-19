@@ -8,19 +8,17 @@
 </head>
 <body>
 <script>
+function clr(btn) {
+  element = document.getElementById(btn);
+  element.classList.remove("w3-amber");
+  element.classList.add("w3-black");
+}
 function fn(btn) {
-  element = document.getElementById('btn1');
-  element.classList.remove("w3-amber");
-  element.classList.add("w3-black");
-  element = document.getElementById('btn2');
-  element.classList.remove("w3-amber");
-  element.classList.add("w3-black");
-  element = document.getElementById('btn3');
-  element.classList.remove("w3-amber");
-  element.classList.add("w3-black");
-  element = document.getElementById('btn4');
-  element.classList.remove("w3-amber");
-  element.classList.add("w3-black");
+  clr('btn1');
+  clr('btn2');
+  clr('btn3');
+  clr('btn4');
+  clr('btn5');  
   
   element = document.getElementById(btn);
   element.classList.add("w3-amber");
@@ -33,10 +31,11 @@ function fn(btn) {
             <font size=5>
             <a href="https://hackmd.io/@yonghwikwon/SktewazVkg" target="cfr" class="w3-button w3-amber" style="border-radius: 8px;" id="btn1"  onclick="javascript:fn('btn1');">Main</a>
             
-            <a href="https://hackmd.io/@yonghwikwon/SyruKHzNke" target="cfr" class="w3-button w3-black" style="border-radius: 8px;" id="btn2"  onclick="javascript:fn('btn2');">Preprocess</a>             
-            <a href="https://hackmd.io/@yonghwikwon/SkBPmVA4yl" target="cfr" class="w3-button w3-black" style="border-radius: 8px;" id="btn3"  onclick="javascript:fn('btn3');">Transformation</a> 
+            <a href="https://hackmd.io/@lkc0626/rkAEtZMByl" target="cfr" class="w3-button w3-black" style="border-radius: 8px;" id="btn2"  onclick="javascript:fn('btn2');">Meeting notes</a>
+            <a href="https://hackmd.io/@yonghwikwon/SyruKHzNke" target="cfr" class="w3-button w3-black" style="border-radius: 8px;" id="btn3"  onclick="javascript:fn('btn3');">Preprocess</a>
+            <a href="https://hackmd.io/@yonghwikwon/SkBPmVA4yl" target="cfr" class="w3-button w3-black" style="border-radius: 8px;" id="btn4"  onclick="javascript:fn('btn4');">Transformation</a> 
             
-            <a href="https://hackmd.io/@yonghwikwon/SyMWpSGEke" target="cfr" class="w3-button w3-black" style="border-radius: 8px;" id="btn4" onclick="javascript:fn('btn4');">Assignments</a>             
+            <a href="https://hackmd.io/@yonghwikwon/SyMWpSGEke" target="cfr" class="w3-button w3-black" style="border-radius: 8px;" id="btn5" onclick="javascript:fn('btn5');">Assignments</a>             
             </font>
         </div>
         </center>
