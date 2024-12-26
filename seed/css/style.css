@@ -326,8 +326,9 @@ button:focus {
 
 .header-desc {
     max-width: 650px;
-    line-height: 1.9;
+    line-height: 1.8;
     font-weight: 610;
+    font-size: 19px;
     color: rgba(255, 255, 255, 0.9) !important;
 }
 
