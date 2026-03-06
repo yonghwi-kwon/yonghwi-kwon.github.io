@@ -141,8 +141,9 @@ function concretize_cmds(text)
         } else if ( concretize[i] == "\\BC" ) {
             inside = "(" + inside + ")";
         } else if ( concretize[i] == "\\cite{" ) {
-            inside = "[0]";
-        }
+            //inside = "[0]";
+            inside = "";
+        }        
         
         text = before + inside + after;
         //console.log("before: '" + before + "'");
@@ -151,6 +152,12 @@ function concretize_cmds(text)
         i--;
     }
     return text;
+}
+function remove_math(text)
+{
+    const out = text.replace(/\$_([A-Za-z0-9])\$/g, '$1');
+
+    return out;
 }
 function process(clipText)
 {
@@ -162,6 +169,7 @@ function process(clipText)
     t = remove_cmds2(t);
     t = replace_escapes(t);
     t = concretize_cmds(t);
+    t = remove_math(t);
     
     document.getElementById('txtOutput').value = t;
     
