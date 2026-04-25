@@ -159,11 +159,22 @@ function remove_math(text)
 
     return out;
 }
+
+function remove_comments(text) {
+    // This regex looks for '%' at the start of a line and removes the entire line
+    // ^% matches '%' at the start of a line
+    // .* matches everything until the end of that line
+    // \n? matches the newline character if it exists
+    // /gm ensures it checks "globally" across "multiple lines"
+    return text.replace(/^%.*\n?/gm, '');
+}
+
 function process(clipText)
 {
     document.getElementById('txtInput').value = clipText;
     t = clipText;
     
+    t = remove_comments(t);
     t = replace_macros(t);
     t = remove_cmds(t);
     t = remove_cmds2(t);
