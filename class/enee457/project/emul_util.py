@@ -38,12 +38,15 @@ def set_output_file(f):
 
 def close_output_file():
     global file_output
-    file_output.close()
+    if file_output != 0:
+        file_output.close()
+        file_output = 0
     
 def out(str):
     global file_output
     print(str)
-    print(str, file=file_output)
+    if file_output != 0:
+        print(str, file=file_output)
 
 def read_string(uc, address):
     ret = ""

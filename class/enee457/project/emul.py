@@ -6,6 +6,13 @@ from unicorn.x86_const import *
 # sudo pip3 install capstone
 from emul_util import *
 
+from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+from capstone.x86_const import X86_OP_IMM
+
+import pickle
+from pathlib import Path
+from unicorn.x86_const import *
+
 import sys
 
 #===============================================
@@ -84,6 +91,38 @@ def load_mem_reg_state(uc):
             i = i + 1
 ##########################################################################################
 
+md = Cs(CS_ARCH_X86, CS_MODE_32)
+md.detail = True
+
+def conditional_jump_destinations(uc, address, size):
+    code = bytes(uc.mem_read(address, size))
+    insn = next(md.disasm(code, address, count=1), None)
+
+    if insn is None:
+        return None
+
+    mnemonic = insn.mnemonic.lower()
+
+    # Jcc, JCXZ/JECXZ, and LOOP/LOOPE/LOOPNE.
+    is_conditional = (
+        (mnemonic.startswith("j") and mnemonic not in ("jmp", "ljmp"))
+        or mnemonic in ("loop", "loope", "loopne")
+    )
+
+    if not is_conditional:
+        return None
+
+    if not insn.operands or insn.operands[0].type != X86_OP_IMM:
+        return None
+
+    fall_through = (address + insn.size) & 0xFFFFFFFF
+
+    # Capstone already resolves the relative displacement
+    # into an absolute destination address.
+    target = insn.operands[0].imm & 0xFFFFFFFF
+
+    return fall_through, target
+
 
 # callback for tracing instructions
 def hook_code(uc, address, size, user_data):
@@ -94,7 +133,16 @@ def hook_code(uc, address, size, user_data):
     trace_reg_changes(uc)
     
     print_instruction(uc, address, size)    
-    
+
+    destinations = conditional_jump_destinations(uc, address, size)
+
+    if destinations is not None:
+        fall_through, target = destinations
+        # print(
+        #     "Conditional jump at 0x%x: fall-through=0x%x, target=0x%x"
+        #     % (address, fall_through, target)
+        # )
+
     if is_validaddr(address) == False:
         out("Out of range: addr %x, addr range %x -- %x" % (address, get_validaddr_begin(), get_validaddr_end()))
         uc.emu_stop()
@@ -163,7 +211,7 @@ def machine_memory_set(uc, code):
 
         
 def Finish(uc):
-    #out(">>> Emulation done")
+    out(">>> Emulation done")
     save_sets()
     save_mem_reg_state(uc)
     close_output_file()
@@ -210,7 +258,6 @@ def hook_interrupt(uc, intno, user_data):
         
         # should terminate the analysis.
         uc.emu_stop()
-        Finish(uc)
         return 
         #=========================================
     elif eax == 48:    # sys_signal ; http://asm.sourceforge.net/syscall.html
@@ -218,6 +265,7 @@ def hook_interrupt(uc, intno, user_data):
         # SIGTRAP	5	Terminate (core dump)	Trace/breakpoint trap
         output = ("[SYSCALL(INT 0x80)] SYS_SIGNAL (Signal: %x, Handler: %x)" % (ebx, ecx))
         out(output)
+        uc.emu_stop()
     ##############################
     else:
         out(">>> 0x%x: UNHANDLED interrupt 0x%x, EAX = 0x%x" %(eip, intno, eax))
@@ -338,6 +386,9 @@ if __name__ == '__main__':
     ## ## 31 d2 eb 0e 31 db 5b b1 19 83 2c 1a 01 42 e2 f9 eb 05 e8 ed ff ff ff 32 c1 51 69 30 30 74 69 69 30 63 6a 6f 32 dc 8a e4 51 55 54 51 b1 0c ce 81    
     CODE_EXAMPLE5 = b"\x31\xd2\xeb\x0e\x31\xdb\x5b\xb1\x19\x83\x2c\x1a\x01\x42\xe2\xf9\xeb\x05\xe8\xed\xff\xff\xff\x32\xc1\x51\x69\x30\x30\x74\x69\x69\x30\x63\x6a\x6f\x32\xdc\x8a\xe4\x51\x55\x54\x51\xb1\x0c\xce\x81";
 
+    CODE_EXAMPLE6 = b"\x6a\x30\x58\x6a\x05\x5b\xeb\x2b\x59\xcd\x80\x3d\x01\xf0\xff\xff\x72\x0f\xc7\x01\x31\xdb\x31\xc0\xc7\x41\x04\xb0\xfc\xcd\x80\xff\xe1\x56\x52\x89\xce\x6a\x15\x5a\x80\x36\xee\x46\x4a\x75\xf9\x5a\x5e\xcc\x40\xe8\xd0\xff\xff\xff\x77\x5e\xe5\xbc\x86\xc1\xc1\x9d\x86\x86\xc1\x8c\x87\x80\x67\x0d\xbc\xbd\xba\x05\x55";
+
+    CODE_EXAMPLE7 = b"\x31\xc0\xb0\x14\xcd\x80\x66\xb9\xf4\x01\x66\x39\xc8\x7c\x0f\x31\xc0\xb0\x25\x31\xdb\x4b\x31\xc9\xb1\x09\xcd\x80\x31\xc0\xb0\x01\x31\xdb\xcd\x80";
 
     run_i386(UC_MODE_32, CODE_EXAMPLE1)
 
