@@ -1,0 +1,14 @@
+{
+  "kernel_buf": {
+    "address": 3221241856,
+    "size": 4
+  },
+  "user_buf": {
+    "address": 4210688,
+    "size": 266
+  },
+  "victim": {
+    "address": 4198400,
+    "size": 190
+  }
+}
